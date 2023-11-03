@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Alien game</title>
+    <meta name="description" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="screen1">
+      <div class="ship-info">
+        <h2>USSA Ship</h2>
+        <p>Hull: <span id="ussaHull">20</span></p>
+      </div>
+      <div>
+        <h1>Invasion game</h1>
+        <p>Round: <span id="roundCounter">1</span></p>
+      </div>
+      <div class="ship-info">
+        <h2>Alien Ship</h2>
+        <p>Hull: <span id="alienHull">5</span></p>
+      </div>
+    </div>
+
+    <div class="screen2">
+      <div class="spaceship1"></div>
+      <div class="laser shoot">laser shoot</div>
+      <div class="spaceship2"></div>
+    </div>
+
+    <div class="screen3">
+      <div class="button">
+        <button id="attackButton">Attack</button>
+        <button id="nextRoundButton">Next Round</button>
+        <button id="restartButton">restart</button>
+      </div>
+      <div id="resultShow"></div>
+    </div>
+    <div id="showInscreen"></div>
+    <script src="script.js" async defer></script>
+  </body>
+</html>
