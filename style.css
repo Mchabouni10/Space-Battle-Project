@@ -1,4 +1,4 @@
-body::before {
+/*body::before {
   content: "";
   position: fixed;
   top: 0;
@@ -8,10 +8,39 @@ body::before {
   background-image: url('images/background.jpeg'); 
   background-size: cover;
   opacity: 2.0; /* Adjust the opacity as needed (0.5 for 50% opacity) */
-  z-index: -1; /* Place it behind the content */
+  /* z-index: -1; */
+/* } */
+
+body  {  
+  background-image: url(/images/background.jpeg);
+  width: 100%;
+  height: 400px;
+  /* margin-right: 35px; */
+  padding: 0%;
+  background-position: 0px 0px;
+  background-repeat: repeat-x;
+
+  -webkit-animation: animatedBackground 10s ease-in-out infinite;
+  -moz-animation: animatedBackground 10s ease-in-out infinite;
+  animation: animatedBackground 10s ease-in-out infinite;
 }
 
-attackButton {
+@-webkit-keyframes animatedBackground {
+ from { background-position: 0 0; }
+ to { background-position: 100% 0; }
+}
+
+@-moz-keyframes animatedBackground {
+ from { background-position: 0 0; }
+ to { background-position: 100% 0; }
+}
+
+@keyframes animatedBackground {
+ from { background-position: 0 0; }
+ to { background-position: 100% 0; }
+}
+
+#attackButton {
     padding: 10px 20px; /* Add padding around the button text */
     margin: 10px; /* Add margin around the button */
     border: 2px solid #333; /* Add a border */
@@ -22,7 +51,19 @@ attackButton {
     font-weight: bold;
     background-color: #050000;
   }
-  restartButton {
+
+  #attackButton:disabled {
+    padding: 10px 20px; /* Add padding around the button text */
+    margin: 10px; /* Add margin around the button */
+    background-color: chartreuse; 
+    border: 2px solid #333; /* Change the border color to gray */
+    border-radius: 5px;
+    color: #060000; /* Change the text color to light gray */
+    box-shadow: none; /* Remove any box shadow */
+    cursor: not-allowed; /* Change the cursor to not-allowed */
+}
+
+  #restartButton {
     padding: 10px 20px; /* Add padding around the button text */
     margin: 10px; /* Add margin around the button */
     border: 2px solid #333; /* Add a border */
@@ -33,18 +74,41 @@ attackButton {
     font-weight: bold;
     background-color: #050000;
   }
-  nextRoundButton{
+  #restartButton:disabled {
+    padding: 10px 20px; /* Add padding around the button text */
+    margin: 10px; /* Add margin around the button */
+    background-color: chartreuse; 
+    border: 2px solid #333; /* Change the border color to gray */
+    border-radius: 5px;
+    color: #060000; /* Change the text color to light gray */
+    box-shadow: none; /* Remove any box shadow */
+    cursor: not-allowed; /* Change the cursor to not-allowed */
+}
+
+  #nextRoundButton{
     padding: 10px 20px; /* Add padding around the button text */
     margin: 10px; /* Add margin around the button */
     border: 2px solid #333; /* Add a border */
     border-radius: 5px; /* Add rounded corners */
-    line-height: 2; /* Vertically center the text */
+    line-height: 2; 
     box-shadow: 3px 3px 5px chartreuse; 
     color: chartreuse;
     font-weight: bold;
     background-color: #050000;
+    margin-bottom: 15px;
   }
+  #nextRoundButton:disabled {
+    padding: 10px 20px; /* Add padding around the button text */
+    margin: 10px; /* Add margin around the button */
+    background-color: chartreuse; 
+    border: 2px solid #333; /* Change the border color to gray */
+    border-radius: 5px;
+    color: #060000; /* Change the text color to light gray */
+    box-shadow: none; /* Remove any box shadow */
+    cursor: not-allowed; /* Change the cursor to not-allowed */
+}
 .screen2{
+  margin: 20px;
   display: flex;
   min-height: 40%;
   padding-top: 30px;
@@ -54,31 +118,50 @@ attackButton {
 }
 
 .spaceship1 {
-    width: 100px;
-    height: 100px;
+    width: 150px;
+    height: 150px;
     background: url('images/spaceship1.png') no-repeat center center;
     background-size: cover;
     position: relative;
 }
-.spaceship2 {
+.alienShip1 {
   width: 100px;
   height: 100px;
-  background: url('images/spaceship2.png') no-repeat center center;
+  background: url('images/alienship1.png') no-repeat center center;
   background-size: cover;
   position: relative;
 }
-.laser {
-    position: absolute;
-    width: 5px;
-    height: 100%;
-    background-color: red;
-    animation: laserAnimation 3s linear;
-    display: none;
+
+
+
+
+
+
+
+
+
+
+
+.lasershoot1 {
+  width: 30px;
+  height: 10px;
+  position: absolute;
+  background-color:chartreuse;
+  margin-left: 100px;
+  margin-top: 45px;
   }
-  
+  .lasershoot2 {
+    width: 30px;
+    height: 10px;
+    position: absolute;
+    background-color:aqua;
+    margin-left: 75%;
+    margin-top: 45px;
+    }
   .screen1 {
+    margin: 40px;
     display: flex;
-    height: 30%;
+    height: 20%;
     justify-content: space-between;
   }
   h1{
@@ -86,6 +169,7 @@ attackButton {
     text-align: center;
     align-self: center;
     box-shadow: 2px 2px 5px  chartreuse; 
+    text-shadow: 2px 2px 5px oldlace;
   }
   .ship-info{
     color: chartreuse;
@@ -95,11 +179,44 @@ attackButton {
     display: flex;
     padding: 0%;
     height: 10%;
-    margin-bottom: 0%;
+    margin-bottom: 40px;
     justify-items: center;
   }
+
   p {
     text-align: center;
     font-weight: bold;
-    color: chartreuse;
+    color: chartreuse; 
   }
+
+  h2 {
+    text-shadow: 2px 2px 5px oldlace;
+  }
+  .showInscreen {
+    min-height: 10%;
+    margin-top: 15px;
+    text-align: center;
+  }
+
+  @keyframes explosion {
+    0% {
+      transform: scale(1);
+      opacity: 1;
+    }
+    100% {
+      transform: scale(3);
+      opacity: 0;
+    }
+  }
+  .explosion {
+    animation: explosion 4s ease forwards;
+  }
+  .particle {
+    position: absolute;
+    width: 5px;
+    height: 5px;
+    background-color: chartreuse;
+    border-radius: 50%;
+    animation: particleEffect 3s ease both;
+  }
+  
