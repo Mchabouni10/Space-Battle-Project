@@ -63,6 +63,29 @@ body  {
     cursor: not-allowed; /* Change the cursor to not-allowed */
 }
 
+#retreatButton {
+  padding: 10px 20px; /* Add padding around the button text */
+  margin: 10px; /* Add margin around the button */
+  border: 2px solid #333; /* Add a border */
+  border-radius: 5px; /* Add rounded corners */
+  line-height: 2; /* Vertically center the text */
+  box-shadow: 3px 3px 5px chartreuse; /* Add a shadow */
+  color: chartreuse;
+  font-weight: bold;
+  background-color: #050000;
+}
+
+#retreatButton:disabled {
+  padding: 10px 20px; /* Add padding around the button text */
+  margin: 10px; /* Add margin around the button */
+  background-color: chartreuse; 
+  border: 2px solid #333; /* Change the border color to gray */
+  border-radius: 5px;
+  color: #060000; /* Change the text color to light gray */
+  box-shadow: none; /* Remove any box shadow */
+  cursor: not-allowed; /* Change the cursor to not-allowed */
+}
+
   #restartButton {
     padding: 10px 20px; /* Add padding around the button text */
     margin: 10px; /* Add margin around the button */
@@ -98,14 +121,14 @@ body  {
     margin-bottom: 15px;
   }
   #nextRoundButton:disabled {
-    padding: 10px 20px; /* Add padding around the button text */
-    margin: 10px; /* Add margin around the button */
+    padding: 10px 20px; 
+    margin: 10px; 
     background-color: chartreuse; 
-    border: 2px solid #333; /* Change the border color to gray */
+    border: 2px solid #333; 
     border-radius: 5px;
-    color: #060000; /* Change the text color to light gray */
-    box-shadow: none; /* Remove any box shadow */
-    cursor: not-allowed; /* Change the cursor to not-allowed */
+    color: #060000; 
+    box-shadow: none; 
+    cursor: not-allowed; 
 }
 .screen2{
   margin: 20px;
@@ -133,30 +156,77 @@ body  {
 }
 
 
+.exitScreen {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.PromptScreen {
+  margin-top: 15%;
+  margin-bottom: 30%;
+  margin-left: 35%;
+  margin-right: 35%;
+  background-image: url(images/prom.jpeg);
+  background-size : cover ;
+  border: 1px solid #0c0c0c;
+  box-shadow: 3px 3px 5px chartreuse; 
+  padding: 20px;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
 
 
+#confirmYesButton {
+  padding: 10px 20px; /* Add padding around the button text */
+  margin: 10px; /* Add margin around the button */
+  border: 2px solid #333; /* Add a border */
+  border-radius: 5px; /* Add rounded corners */
+  line-height: 2; 
+  box-shadow: 3px 3px 5px chartreuse; 
+  color: chartreuse;
+  font-weight: bold;
+  background-color: #050000;
+  margin-bottom: 15px;
+}
 
-
-
-
-
-
+#confirmNoButton {
+  padding: 10px 20px; /* Add padding around the button text */
+  margin: 10px; /* Add margin around the button */
+  border: 2px solid #333; /* Add a border */
+  border-radius: 5px; /* Add rounded corners */
+  line-height: 2; 
+  box-shadow: 3px 3px 5px chartreuse; 
+  color: chartreuse;
+  font-weight: bold;
+  background-color: #050000;
+  margin-bottom: 15px;
+}
 
 .lasershoot1 {
   width: 30px;
   height: 10px;
   position: absolute;
   background-color:chartreuse;
-  margin-left: 100px;
-  margin-top: 45px;
+  margin-left: 12%;
+  margin-top: 5%;
   }
   .lasershoot2 {
-    width: 30px;
+    width: 35px;
     height: 10px;
     position: absolute;
     background-color:aqua;
-    margin-left: 75%;
-    margin-top: 45px;
+    margin-left: 82%;
+    margin-top: 60px;
     }
   .screen1 {
     margin: 40px;
@@ -208,15 +278,15 @@ body  {
       opacity: 0;
     }
   }
-  .explosion {
-    animation: explosion 4s ease forwards;
-  }
-  .particle {
-    position: absolute;
-    width: 5px;
-    height: 5px;
-    background-color: chartreuse;
-    border-radius: 50%;
-    animation: particleEffect 3s ease both;
+
+  @keyframes explode {
+    0% {
+      transform: scale(1);
+      opacity: 1;
+    }
+    100% {
+      transform: scale(2);
+      opacity: 0;
+    }
   }
   
