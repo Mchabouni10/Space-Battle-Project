@@ -25,7 +25,7 @@ body  {
   animation: animatedBackground 10s ease-in-out infinite;
 }
 
-@-webkit-keyframes animatedBackground {
+@-webkit-keyframes animatedBackground { /* got it from dylan link he sent me, I just ajust some modification*/
  from { background-position: 0 0; }
  to { background-position: 100% 0; }
 }
@@ -41,78 +41,78 @@ body  {
 }
 
 #attackButton {
-    padding: 10px 20px; /* Add padding around the button text */
-    margin: 10px; /* Add margin around the button */
-    border: 2px solid #333; /* Add a border */
-    border-radius: 5px; /* Add rounded corners */
-    line-height: 2; /* Vertically center the text */
-    box-shadow: 3px 3px 5px chartreuse; /* Add a shadow */
+    padding: 10px 20px;
+    margin: 10px; 
+    border: 2px solid #333; 
+    border-radius: 5px; 
+    line-height: 2; 
+    box-shadow: 3px 3px 5px chartreuse; 
     color: chartreuse;
     font-weight: bold;
     background-color: #050000;
   }
 
   #attackButton:disabled {
-    padding: 10px 20px; /* Add padding around the button text */
-    margin: 10px; /* Add margin around the button */
+    padding: 10px 20px; 
+    margin: 10px; 
     background-color: chartreuse; 
-    border: 2px solid #333; /* Change the border color to gray */
+    border: 2px solid #333; 
     border-radius: 5px;
-    color: #060000; /* Change the text color to light gray */
-    box-shadow: none; /* Remove any box shadow */
-    cursor: not-allowed; /* Change the cursor to not-allowed */
+    color: #060000; 
+    box-shadow: none; 
+    cursor: not-allowed; 
 }
 
 #retreatButton {
-  padding: 10px 20px; /* Add padding around the button text */
-  margin: 10px; /* Add margin around the button */
-  border: 2px solid #333; /* Add a border */
-  border-radius: 5px; /* Add rounded corners */
-  line-height: 2; /* Vertically center the text */
-  box-shadow: 3px 3px 5px chartreuse; /* Add a shadow */
+  padding: 10px 20px; 
+  margin: 10px; 
+  border: 2px solid #333; 
+  border-radius: 5px; 
+  line-height: 2; 
+  box-shadow: 3px 3px 5px chartreuse; 
   color: chartreuse;
   font-weight: bold;
   background-color: #050000;
 }
 
 #retreatButton:disabled {
-  padding: 10px 20px; /* Add padding around the button text */
-  margin: 10px; /* Add margin around the button */
+  padding: 10px 20px; 
+  margin: 10px; 
   background-color: chartreuse; 
-  border: 2px solid #333; /* Change the border color to gray */
+  border: 2px solid #333; 
   border-radius: 5px;
-  color: #060000; /* Change the text color to light gray */
-  box-shadow: none; /* Remove any box shadow */
-  cursor: not-allowed; /* Change the cursor to not-allowed */
+  color: #060000; 
+  box-shadow: none; 
+  cursor: not-allowed; 
 }
 
   #restartButton {
-    padding: 10px 20px; /* Add padding around the button text */
-    margin: 10px; /* Add margin around the button */
-    border: 2px solid #333; /* Add a border */
-    border-radius: 5px; /* Add rounded corners */
-    line-height: 2; /* Vertically center the text */
+    padding: 10px 20px;
+    margin: 10px; 
+    border: 2px solid #333; 
+    border-radius: 5px; 
+    line-height: 2; 
     box-shadow: 3px 3px 5px chartreuse; 
     color: chartreuse;
     font-weight: bold;
     background-color: #050000;
   }
   #restartButton:disabled {
-    padding: 10px 20px; /* Add padding around the button text */
-    margin: 10px; /* Add margin around the button */
+    padding: 10px 20px; 
+    margin: 10px; 
     background-color: chartreuse; 
-    border: 2px solid #333; /* Change the border color to gray */
+    border: 2px solid #333; 
     border-radius: 5px;
-    color: #060000; /* Change the text color to light gray */
-    box-shadow: none; /* Remove any box shadow */
-    cursor: not-allowed; /* Change the cursor to not-allowed */
+    color: #060000; 
+    box-shadow: none;
+    cursor: not-allowed;
 }
 
   #nextRoundButton{
-    padding: 10px 20px; /* Add padding around the button text */
-    margin: 10px; /* Add margin around the button */
-    border: 2px solid #333; /* Add a border */
-    border-radius: 5px; /* Add rounded corners */
+    padding: 10px 20px; 
+    margin: 10px; 
+    border: 2px solid #333; 
+    border-radius: 5px; 
     line-height: 2; 
     box-shadow: 3px 3px 5px chartreuse; 
     color: chartreuse;
@@ -163,7 +163,7 @@ body  {
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(0, 0, 0, 0.8);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -187,10 +187,10 @@ body  {
 
 
 #confirmYesButton {
-  padding: 10px 20px; /* Add padding around the button text */
-  margin: 10px; /* Add margin around the button */
-  border: 2px solid #333; /* Add a border */
-  border-radius: 5px; /* Add rounded corners */
+  padding: 10px 20px; 
+  margin: 10px; 
+  border: 2px solid #333; 
+  border-radius: 5px; 
   line-height: 2; 
   box-shadow: 3px 3px 5px chartreuse; 
   color: chartreuse;
@@ -200,10 +200,10 @@ body  {
 }
 
 #confirmNoButton {
-  padding: 10px 20px; /* Add padding around the button text */
-  margin: 10px; /* Add margin around the button */
-  border: 2px solid #333; /* Add a border */
-  border-radius: 5px; /* Add rounded corners */
+  padding: 10px 20px; 
+  margin: 10px; 
+  border: 2px solid #333; 
+  border-radius: 5px; 
   line-height: 2; 
   box-shadow: 3px 3px 5px chartreuse; 
   color: chartreuse;

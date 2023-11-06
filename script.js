@@ -131,6 +131,7 @@ function startRound() {
   loadAlienShipImage(); // Load the alien ship image for the current round
 
   console.log(`Round ${currentRound} begins!`);
+  showInscreen.innerHTML = `<p>Round ${currentRound} begins!</p>`
   document.getElementById("ussaHull").textContent = ussShip.hull; //access to spaceship hull
   document.getElementById("alienHull").textContent = currentAlienShip.hull; //access to current alienship hull
   document.getElementById("roundCounter").textContent = currentRound; // access to the current round
@@ -199,10 +200,15 @@ document
 document.getElementById("restartButton").addEventListener("click", function () {
   showInscreen.innerHTML = ""; // once we click restart will clean all the previous text
   currentRound = 1;
+  ussShip = null;
+  alienShips.length = 0
+  for (let i = 0; i < 6; i++) {
+    alienShips.push(new AlienShip());
+  }
   startRound();
   document.getElementById("attackButton").disabled = false;
   document.getElementById("nextRoundButton").disabled = true;
-  document.getElementById("retreatButton").disabled = true;
+  document.getElementById("retreatButton").disabled = false;
   document.getElementById("restartButton").disabled = true; //restart button is unbaled when we loose or we go over all the rounds exist
 });
 
@@ -216,45 +222,44 @@ exitScreen.style.display = "none"; // i added it because I had issue that prompt
 
 // addeventlistner for my retreat button if we want to exit or no with yes and no buttons 
 document.getElementById("retreatButton").addEventListener("click", function () {
-  const exitScreen = document.getElementById("exitScreen");
-  exitScreen.style.display = "block";
+  const exitScreen = document.getElementById("exitScreen"); // const to access to prompt screen
+  exitScreen.style.display = "block"; // display the screen as block
 
   document
-    .getElementById("confirmYesButton")
+    .getElementById("confirmYesButton") // access to yes button from prompt screen if we want to exit the game
     .addEventListener("click", function () {
-      console.log("You chose to exit the game");
-      showInscreen.innerHTML = "<p>Game Over</p>";
-      exitScreen.style.display = "none";
-      window.close();
+      exitScreen.style.display = "none"; // add eventlistner for yes button
+      window.close(); // function from w3 school close the browser whan i click on yes to exit the game
     });
 
   document
-    .getElementById("confirmNoButton")
-    .addEventListener("click", function () {
+    .getElementById("confirmNoButton") // access to no button if we change our mind and we want to keep playing
+    .addEventListener("click", function () { //add an eventlistner to the no button 
       console.log("You chose to keep playing");
-      exitScreen.style.display = "none";
+      exitScreen.style.display = "none"; // hide the prompt screen once we hit no and comeback to game 
     });
 });
 
 // function my move is laser shooting once we click in attack button
 // I took it from w3school and put some modification on it
+let id1 = null;
+const elem1 = document.querySelector(".lasershoot1");
+let pos1 = 0;
 
 function myMove1() {
-  let id = null;
-  const elem = document.querySelector(".lasershoot1");
-  let pos = 0;
-  clearInterval(id);
-  id = setInterval(frame, 3);
-  function frame() {
-    if (pos == window.innerWidth / 1) {
-      clearInterval(id);
+    clearInterval(id1);
+    pos1 = 0;
+    elem1.style.left = pos1 + "px";
+    id1 = setInterval(frame1, 3);
+  }
+  function frame1() {
+    if (pos1 == window.innerWidth / 1) {
+      clearInterval(id1);
     } else {
-      pos++;
-      elem.style.left = pos + "px";
-      // Update only the horizontal position
+      pos1++;
+      elem1.style.left = pos1 + "px";
     }
   }
-}
 const attackButton1 = document.getElementById("attackButton");
 attackButton1.addEventListener("click", myMove1);
 
@@ -280,18 +285,19 @@ const attackButton2 = document.getElementById("attackButton"); // both trigged w
 attackButton2.addEventListener("click", myMove2);
 
 
-function triggerExplosion(target) {
+//function to trigg explosion for the lost ship. got it with help of google 
+function triggerExplosion(target) { 
   const alienShipImage = document.getElementById('alienShipImage'); 
 
   // Apply the explosion animation to the alien ship image
-  alienShipImage.style.animation = 'explode 3s ease-in-out';
+  alienShipImage.style.animation = 'explode 7s ease-in-out';
   alienShipImage.style.animationFillMode = 'forwards';
 
   // Delay removal of the explosion effect and reset the animation
   setTimeout(function () {
     alienShipImage.style.animation = '';
     alienShipImage.style.animationFillMode = '';
-  }, 2000); // 
+  }, 3000); // 
 }
 
 
