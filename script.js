@@ -16,23 +16,28 @@ class Spaceship {
   attack(target) {
     let accuracyShoot = Math.random(); // create a variable accuracyShoot and set it randmoly
     const logMessage = document.createElement("p"); // create a variable that let us to create a strings in our html and display them
+    const logSpace = document.createElement('p');
+    logSpace.innerHTML = "<br>";
     console.log(`The Accuracy is ${accuracyShoot}`); //consolelog the random accuracy in my console
+    logMessage.innerHTML = `The Accuracy is ${accuracyShoot}<br>`
 
     if (Math.random() < this.accuracy) {
       // statement if the accuracyshoot less than the set accuracy Alienship will be hit
       console.log(`It's a direct hit!`);
-      logMessage.textContent += "Its a direct hit!  "; // display on my screen that alienship got hit
+      logMessage.innerHTML += "It's a direct hit!<br>";  // display on my screen that alienship got hit
+  
       target.hull -= this.firepower; // whatever Alienship got hit the hull decrease
       if (target.hull < 0) {
         //statement if the target hull negative we bring it to zero to prevent negative value
         target.hull = 0;
       }
       console.log(`AlienShip has ${target.hull} life left.`); //check the hull alienship on my console
-      logMessage.textContent += ` AlienShip has ${target.hull} life left.`; // display the hull left on my screen
+      logMessage.innerHTML += ` AlienShip has ${target.hull} life left. <br>`; // display the hull left on my screen
+      const logSpace = document.createElement('p');
       if (target.hull <= 0) {
         // statement if there is no hull left mean the alienship is destroyed
         console.log(`Alien ship is destroyed. You win Round ${currentRound}!`); //show on my console that alienship destroyed
-        logMessage.textContent += `Alien ship is destroyed. You win Round ${currentRound}!`; //show on my screen alienship distroyed
+        logMessage.innerHTML += ` Alien ship is destroyed.<br>You win Round ${currentRound}!`; //show on my screen alienship distroyed
         triggerExplosion();
         //hint currentRound declared in the bottom to display the round playing
 
@@ -43,9 +48,12 @@ class Spaceship {
     } else {
       // statement that accuracyShoot is higher than the accuracy set mean we missed target
       console.log(`You missed!`); // consolelog on my console that we missed the target
-      logMessage.textContent += `You missed! your attack`;
+      logMessage.innerHTML+= `You missed!<br> your attack`;
     }
     showInscreen.appendChild(logMessage);
+      // Append the logSpace element to add space between conditions
+  // showInscreen.appendChild(logSpace);
+
   }
 }
 
@@ -62,33 +70,34 @@ class AlienShip {
   //function attack alienship to spaceship ================
 
   attack(target) {
-    //function attack
-    let accuracyShoot = Math.random(); // set accuracyshoot to random to do the comparison with alienship accuracy
-    const logMessage = document.createElement("p"); // creat p element to to show the console messages on my screen
-    console.log(`the Accuracy  ${accuracyShoot}`); // conolelog the accuracyshoot
+    let accuracyShoot = Math.random();
+    const logMessage = document.createElement("p");
+    const logSpace = document.createElement('p');
+    console.log(`the Accuracy ${accuracyShoot}`);
+    logMessage.innerHTML = `the Accuracy ${accuracyShoot},<br>`
+  
     if (Math.random() < this.accuracy) {
-      // the same logic with attack target for spaceship, just in opposite side
-      // now when the alienship attack the spaceship
       console.log(`You have been hit by the AlienShip`);
-      logMessage.textContent += `You have been hit by the AlienShip`;
+      logMessage.innerHTML += `You have been hit by the AlienShip <br>`;
       target.hull = target.hull - this.firepower;
       if (target.hull < 0) {
         target.hull = 0;
       }
       console.log(`USSship has ${target.hull} life left.`);
-      logMessage.textContent += ` USSship has ${target.hull} life left. `;
+      logMessage.innerHTML += ` USSship has ${target.hull} life left. <br>`;
       if (target.hull <= 0) {
-        console.log("spaceship is destoyed, you loose !!!!!");
-        logMessage.textContent += "Game Over you lost";
+        console.log("spaceship is destroyed, you loose !!!!!");
+        logMessage.innerHTML += "Game Over you lost";
         triggerExplosion();
       }
     } else {
       console.log(`You escaped the attack`);
-      logMessage.textContent += `You escaped the attack`;
+      logMessage.innerHTML += `You escaped the attack <br>`;
     }
-    showInscreen.appendChild(logMessage); // use appendChild on my variable logMessgae to my screen not just a console
+    showInscreen.appendChild(logMessage);
+    // showInscreen.appendChild(logSpace);
   }
-}
+}  
 
 //create function getRandom value to have a random values of each proprietes for the alienships
 function getRandomValue(min, max) {
@@ -102,7 +111,7 @@ for (let i = 0; i < 6; i++) {
 }
 
 const alienShipImages = [
-  //set each alineship different shape and look for each alien
+  //set each alineship different shape and look for each alien in our loop we set before 
   "images/alienShip1.png",
   "images/alienShip2.png",
   "images/alienShip3.png",
@@ -130,7 +139,7 @@ function startRound() {
 
   loadAlienShipImage(); // Load the alien ship image for the current round
 
-  console.log(`Round ${currentRound} begins!`);
+  console.log(`Round ${currentRound} begins!`); // we start with round 1 and going up throu round 6
   showInscreen.innerHTML = `<p>Round ${currentRound} begins!</p>`
   document.getElementById("ussaHull").textContent = ussShip.hull; //access to spaceship hull
   document.getElementById("alienHull").textContent = currentAlienShip.hull; //access to current alienship hull
@@ -155,7 +164,7 @@ function endRound() {
 
     if (currentRound < maxRounds) {
       //statement to check if I am not in the last round to disable next round button
-      document.getElementById("nextRoundButton").disabled = false;
+      document.getElementById("nextRoundButton").disabled = false; //if we are not in the last round mean we can keep 
     }
     document.getElementById("restartButton").disabled = false;
     document.getElementById("retreatButton").disabled = false;
@@ -265,18 +274,19 @@ attackButton1.addEventListener("click", myMove1);
 
 // function my move is laser shooting once we click in attack button
 // first one mymove1 shoot last from left to right and mymove 2 shoot laser from right to left
+let id2 = null;
+const elem2 = document.querySelector(".lasershoot2");
+const containerWidth = -100;
+let pos2 = containerWidth;
 function myMove2() {
-  let id = null;
-  const elem = document.querySelector(".lasershoot2");
-  let pos = window.innerWidth; // Set the initial position to the right edge
-  clearInterval(id);
+  clearInterval(id2);
   id = setInterval(frame, 3);
   function frame() {
-    if (pos == 0) {
-      clearInterval(id);
+    if (pos2 == 0) {
+      clearInterval(id2);
     } else {
-      pos--;
-      elem.style.left = pos + "px";
+      pos2--;
+      elem2.style.left = pos2 + "px";
     }
   }
 }
@@ -290,7 +300,7 @@ function triggerExplosion(target) {
   const alienShipImage = document.getElementById('alienShipImage'); 
 
   // Apply the explosion animation to the alien ship image
-  alienShipImage.style.animation = 'explode 7s ease-in-out';
+  alienShipImage.style.animation = 'explode 2s ease-in-out';
   alienShipImage.style.animationFillMode = 'forwards';
 
   // Delay removal of the explosion effect and reset the animation
